@@ -15,7 +15,15 @@ import React from "react";
 export const PlaceDetails = ({ place }) => {
   return (
     <div>
-      <Card elevation={6}>
+      <Card
+        elevation={6}
+        sx={{
+          "&:hover": { zIndex: 4 },
+          // "&:hover": {
+          //   backgroundColor: "rgb(7, 177, 77, 0.42)",
+          // },
+        }}
+      >
         <CardMedia
           style={{ height: 350 }}
           image={

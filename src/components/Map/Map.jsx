@@ -45,12 +45,12 @@ export const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
                 position: "absolute",
                 transform: "translate(-50%, -50%)",
                 zIndex: 1,
-                "&:hover": { zIndex: 2 },
+                "&:hover": { zIndex: 4 },
               }}
             >
               {/* <LocationOnIcon color="secondary" fontSize="larger" /> */}
               {!isDesktop ? (
-                <LocationOnIcon color="primary" fontSize="5rem" />
+                <LocationOnIcon color="secondary" fontSize="10rem" />
               ) : (
                 <Paper
                   elevation={3}
