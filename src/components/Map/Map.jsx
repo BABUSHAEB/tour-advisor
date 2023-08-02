@@ -60,6 +60,8 @@ export const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
                     flexDirection: "column",
                     justifyContent: "center",
                     width: "100px",
+                    zIndex: 1,
+                    "&:hover": { zIndex: 4 },
                   }}
                 >
                   <Typography
