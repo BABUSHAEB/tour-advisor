@@ -1,5 +1,6 @@
-import React, { useState, useEffect, createRef } from "react";
+import React, { useState, useEffect, createRef, useRef } from "react";
 import {
+  Box,
   CircularProgress,
   FormControl,
   Grid,
@@ -10,24 +11,39 @@ import {
 } from "@mui/material";
 import { PlaceDetails } from "../PlaceDetails/PlaceDetails";
 
-export const List = ({ places, childClicked, isLoading }) => {
-  const [type, setType] = useState("restaurants");
-  const [rating, setRating] = useState("0");
+export const List = ({
+  places,
+  childClicked,
+  isLoading,
+  type,
+  setType,
+  rating,
+  setRating,
+}) => {
   const [elRefs, setElRefs] = useState([]);
 
+  // const ref = useRef();
+
+  // useEffect(() => {
+  //   let refs = Array(places?.length)
+  //     .fill()
+  //     .map((_, i) => refs[i] || createRef());
+  //   setElRefs(refs);
+  // }, [places]);
   useEffect(() => {
-    let refs = Array(places?.length)
-      .fill()
-      .map((_, i) => refs[i] || createRef());
-    setElRefs(refs);
+    setElRefs((refs) =>
+      Array(places?.length)
+        .fill()
+        .map((_, i) => refs[i] || createRef())
+    );
   }, [places]);
 
   return (
     <>
-      <div
+      <Box
         sx={{
           padding: "25px",
-          pt: 4,
+          pt: 0,
         }}
       >
         <Typography variant="h4">
@@ -35,8 +51,15 @@ export const List = ({ places, childClicked, isLoading }) => {
         </Typography>
 
         {isLoading ? (
-          <div>
-            <CircularProgress size="5rem" />
+          <div
+            style={{
+              height: "600px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <CircularProgress size="5rem" color="secondary" />
           </div>
         ) : (
           <>
@@ -53,7 +76,7 @@ export const List = ({ places, childClicked, isLoading }) => {
               <Select value={type} onChange={(e) => setType(e.target.value)}>
                 <MenuItem value="restaurants">Restaurants </MenuItem>
                 <MenuItem value="hotels">Hotels </MenuItem>
-                <MenuItem value="attraction">Attraction </MenuItem>
+                <MenuItem value="attractions">Attraction </MenuItem>
               </Select>
             </FormControl>
             <FormControl
@@ -96,7 +119,7 @@ export const List = ({ places, childClicked, isLoading }) => {
             </Grid>
           </>
         )}
-      </div>
+      </Box>
     </>
   );
 };
