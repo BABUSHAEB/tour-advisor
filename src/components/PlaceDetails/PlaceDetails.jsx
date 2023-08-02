@@ -12,7 +12,9 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-export const PlaceDetails = ({ place }) => {
+export const PlaceDetails = ({ place, selected, refProp }) => {
+  if (selected)
+    refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   return (
     <div>
       <Card
